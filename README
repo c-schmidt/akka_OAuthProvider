@@ -1,0 +1,17 @@
+Akka OAuthProvider 
+------------------
+
+This module is an Akka 2.0 Actor with OAuth 1.0 (only 2-legged) 
+support to secure your play based rest-service. 
+
+You can find an example on: 
+---------------------------
+https://github.com/spirit-fhs/data
+
+See also:
+---------
+http://code.google.com/p/oauth/
+http://akka.io/
+https://github.com/typesafehub/play2-mini
+http://www.playframework.org/
+
