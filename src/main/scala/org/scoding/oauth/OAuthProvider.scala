@@ -51,8 +51,7 @@ class OAuthProvider extends Actor {
       }catch {
         //TODO: exception handling, statuscodes etc.
         case e: OAuthProblemException => 
-          sender ! OAuthResult(
-              Status(e.getHttpStatusCode())(e.getMessage()))
+          sender ! OAuthResult(OAuthProviderException.handle(e.getMessage()))
         case _ =>  
       }
     case GetAccessToken(request) =>    
@@ -85,8 +84,7 @@ class OAuthProvider extends Actor {
       }catch {
         //TODO: exception handling, statuscodes etc.
         case e: OAuthProblemException => 
-          sender ! OAuthResult(
-              Status(e.getHttpStatusCode())(e.getMessage()))
+          sender ! OAuthResult(OAuthProviderException.handle(e.getMessage()))
       }
     case ValidateSignature(request) =>
       try{
@@ -105,7 +103,7 @@ class OAuthProvider extends Actor {
         case e: OAuthProblemException => 
           sender ! OAuthValidationResult(
               false,
-              Status(e.getHttpStatusCode())(e.getMessage()))
+              OAuthProviderException.handle(e.getMessage()))
       }  
     case _ => 
   }
